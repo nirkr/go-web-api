@@ -3,9 +3,9 @@ package main
 import (
 	"github.com/rs/zerolog/log"
 	config "simple_bank"
-	"simple_bank/api"
-	"simple_bank/internal/controllers"
 	"simple_bank/internal/repository"
+	"simple_bank/web"
+	"simple_bank/web/controllers"
 )
 
 func main() {
@@ -24,11 +24,11 @@ func main() {
 	log.Info().Msg("Postgres DB was initiated successfully")
 
 	// init ControllerStore
-	store := api.ControllerStore{
+	store := web.ControllerStore{
 		AccountController: controllers.NewAccountController(),
 	}
 	// init Server
-	server := api.NewServer(store)
+	server := web.NewServer(store)
 	err = server.Run(loadConfig.ServerPort)
 	if err != nil {
 		log.Fatal().Msg(err.Error())

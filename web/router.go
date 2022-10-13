@@ -1,8 +1,8 @@
-package api
+package web
 
 import (
 	"github.com/gin-gonic/gin"
-	"simple_bank/internal/controllers"
+	"simple_bank/web/controllers"
 )
 
 type ControllerStore struct {
